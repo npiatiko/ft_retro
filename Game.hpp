@@ -6,9 +6,11 @@
 #define GAME_HPP
 #include "Sky.hpp"
 #include "Character.hpp"
+#include "Squad.hpp"
 
 class Game {
 private:
+	Squad _squad;
 	Sky _sky;
 	Character ranger;
 	void initColor();

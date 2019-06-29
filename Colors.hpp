@@ -9,6 +9,7 @@
 # define BLUE	12
 # define RED	13
 # define CYAN	14
+#define YELLOW	15
 #define Y 75
 #define X 361
 

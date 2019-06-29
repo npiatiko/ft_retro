@@ -15,9 +15,9 @@ protected:
 	int			_x;
 	int			_y;
 	std::string	_type;
-	Marine();
 
 public:
+	Marine();
 	~Marine();
 	Marine(const Marine &obj);
 	Marine &operator=(Marine const &rhs);

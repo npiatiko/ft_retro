@@ -35,6 +35,7 @@ void Game::play() {
 		clear();
 		this->_sky.drawSky();
 		ranger.drawmarine();
+		_squad.drawSquad();
 		refresh();
 		if ((key = getch()) == ' '){
 			break;
@@ -48,6 +49,7 @@ void Game::initColor() {
 
 	init_pair(GREEN, COLOR_GREEN, 0);
 	init_pair(GRAY, 8, 0);
+	init_pair(YELLOW, COLOR_YELLOW, 0);
 }
 void Game::keyControl(int key) {
 	switch (key){
@@ -67,6 +69,8 @@ void Game::keyControl(int key) {
 			this->ranger.setX(1);
 			break;
 		}
+//		default:
+//			break;
 	}
 
 }

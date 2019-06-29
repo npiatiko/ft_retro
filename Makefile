@@ -18,7 +18,9 @@ SRCS = main.cpp\
 		Game.cpp\
 		Sky.cpp\
 		Character.cpp\
-		Marine.cpp
+		Marine.cpp\
+		Squad.cpp\
+		Pirates.cpp
 
 OBJ = $(SRCS:.cpp=.o)
 
@@ -37,6 +39,6 @@ clean :
 	rm -f $(OBJ)
 
 fclean: clean
-	rm -f megaphone
+	rm -f $(NAME)
 
 re:	fclean all
