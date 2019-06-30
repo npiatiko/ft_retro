@@ -25,6 +25,7 @@ SRCS =  main.cpp\
 		Raptor.cpp\
 		Bullet.cpp\
 		EnemyBullet.cpp\
+		Asteroid.cpp\
 		Hud.cpp
 
 OBJ_DIR = ./obj
