@@ -37,6 +37,7 @@ void Game::play() {
 		clear();
 		_hud.drawHud();
 		ranger.drawmarine();
+		getSquad().spawn();
 		getSquad().dellDeadMarines();
 		getSquad().action();
 		getSquad().searchInterseption();

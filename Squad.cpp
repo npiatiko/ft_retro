@@ -9,7 +9,7 @@
 #include "Bomber.hpp"
 #include "Raptor.hpp"
 
-Squad::Squad() :_count(10){
+Squad::Squad() :_count(10), _spawnClock(clock()){
 	srand(time(NULL));
 	this->_squad = new Marine *[this->_count];
 	this->learnMarines();
@@ -130,4 +130,11 @@ int Squad::searchInterseption() {
 		}
 	}
 	return tmp;
+}
+void Squad::spawn() {
+	if (((long double)(clock() - this->_spawnClock) / CLOCKS_PER_SEC) > 0.5){
+		this->pushMarine(this->_source[rand() % 4]->clone());
+		this->_spawnClock = clock();
+	}
+
 }

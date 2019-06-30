@@ -7,7 +7,7 @@
 #include "Colors.hpp"
 
 Marine::Marine(const Marine &obj) {
-	this->_x = rand() % (X - 100) + 100;
+	this->_x = rand() % (X / 10) + 315;
 	this->_y = rand() % Y;
 	this->color = obj.color;
 	this->_char = obj._char;

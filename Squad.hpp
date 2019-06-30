@@ -13,6 +13,8 @@ private:
 	Marine	*_source[4];
 	int		_count;
 	void	learnMarines();
+	clock_t _spawnClock;
+
 
 public:
 	Squad();
@@ -25,6 +27,7 @@ public:
 	void pushMarine(Marine *);
 	int searchInterseption();
 	void dellDeadMarines();
+	void 	spawn();
 
 };
 
