@@ -21,6 +21,8 @@ public:
 	Squad &operator=(Squad const &rhs);
 	void drawSquad();
 	void action();
+	void popMarine(Marine *);
+	void dellDeadMarines();
 
 };
 

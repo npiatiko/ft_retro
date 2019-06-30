@@ -38,3 +38,6 @@ float Marine::gettime() {
 
 	return delay;
 }
+int Marine::getX() const {
+	return _x;
+}

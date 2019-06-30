@@ -9,14 +9,14 @@
 
 class Marine {
 protected:
+	clock_t 	_clocks;
+	std::string	_type;
 	char		_char;
 	int 		color;
 	int 		_hp;
 	int			_x;
 	int			_y;
 	Marine();
-	std::string	_type;
-	clock_t 	_clocks;
 
 public:
 	virtual ~Marine() {}
@@ -26,6 +26,7 @@ public:
 	virtual Marine *clone()const = 0;
 	virtual void movemarine();
 	float gettime();
+	int getX() const;
 };
 
 

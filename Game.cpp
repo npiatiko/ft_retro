@@ -38,6 +38,7 @@ void Game::play() {
 		ranger.drawmarine();
 		_squad.drawSquad();
 		_squad.action();
+		_squad.dellDeadMarines();
 		refresh();
 		if ((key = getch()) == ' '){
 			break;
