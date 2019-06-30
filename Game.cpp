@@ -35,7 +35,7 @@ void Game::play() {
 	while (true) {
 		usleep(6000);
 		clear();
-		this->_sky.drawSky();
+		_hud.drawHud();
 		ranger.drawmarine();
 		getSquad().drawSquad();
 		getSquad().action();
@@ -57,6 +57,7 @@ void Game::initColor() {
 	init_pair(RED, COLOR_RED, 0);
 	init_pair(CYAN, COLOR_CYAN, 0);
 	init_pair(RAPTOR, COLOR_RED, COLOR_YELLOW);
+	init_pair(BORDER, COLOR_YELLOW, COLOR_YELLOW);
 }
 void Game::keyControl(int key) {
 	switch (key){

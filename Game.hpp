@@ -3,18 +3,18 @@
 //
 
 #ifndef GAME_HPP
-#define GAME_HPP
-#include "Sky.hpp"
-#include "Character.hpp"
-#include "Squad.hpp"
+# define GAME_HPP
+# include "Character.hpp"
+# include "Squad.hpp"
+# include "Hud.hpp"
 
 class Game {
 private:
-	Sky _sky;
+	Squad _squad;
 	Character ranger;
 	void initColor();
 	void keyControl(int key);
-
+	Hud _hud;
 
 public:
 	static Squad &getSquad();
