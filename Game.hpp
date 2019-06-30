@@ -10,7 +10,6 @@
 
 class Game {
 private:
-	Squad _squad;
 	Sky _sky;
 	Character ranger;
 	void initColor();
@@ -18,12 +17,12 @@ private:
 
 
 public:
+	static Squad &getSquad();
 	Game();
 	~Game();
 	Game(const Game &obj);
 	Game &operator=(Game const &rhs);
 	void play();
-//	static Squad const &getSquad();
 };
 
 

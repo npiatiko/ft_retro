@@ -4,6 +4,7 @@
 #include "Colors.hpp"
 #include "Raptor.hpp"
 #include "Game.hpp"
+#include "EnemyBullet.hpp"
 
 Raptor::Raptor() :Marine(){
 	this->color = COLOR_PAIR(RAPTOR);
@@ -51,4 +52,5 @@ void Raptor::movemarine() {
 	}
 }
 void Raptor::attack() {
+	Game::getSquad().pushMarine(new EnemyBullet(*this));
 }

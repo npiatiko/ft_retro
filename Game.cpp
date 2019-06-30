@@ -37,9 +37,9 @@ void Game::play() {
 		clear();
 		this->_sky.drawSky();
 		ranger.drawmarine();
-		_squad.drawSquad();
-		_squad.action();
-		_squad.dellDeadMarines();
+		getSquad().drawSquad();
+		getSquad().action();
+		getSquad().dellDeadMarines();
 		refresh();
 		if ((key = getch()) == 'q'){
 			break;
@@ -77,13 +77,14 @@ void Game::keyControl(int key) {
 			break;
 		}
 		case ' ':{
-			this->_squad.pushMarine(new Bullet(this->ranger));
+			this->getSquad().pushMarine(new Bullet(this->ranger));
 		}
 		default:
 			break;
 	}
 
 }
-//Squad const &Game::getSquad() {
-//	return _squad;
-//}
+Squad &Game::getSquad() {
+	static Squad s;
+	return s;
+}

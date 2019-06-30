@@ -35,7 +35,6 @@ Bullet &Bullet::operator=(Bullet const &rhs) {
 }
 void Bullet::movemarine() {
 	this->_x++;
-//	Marine::movemarine();
 }
 Marine *Bullet::clone() const {
 	return nullptr;

@@ -25,6 +25,7 @@ SRCS = main.cpp\
 		Bomber.cpp\
 		Raptor.cpp\
 		Bullet.cpp\
+		EnemyBullet.cpp
 
 OBJ = $(SRCS:.cpp=.o)
 
