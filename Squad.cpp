@@ -136,18 +136,3 @@ void Squad::spawn() {
 	}
 
 }
-void Squad::spawnBOSS() {
-
-	Marine *boss = this->_source[rand() % 4];
-	Marine *tmp;
-	for (int i = 0; i < 4; ++i) {
-		tmp = boss->clone();
-		tmp->setX(300);
-		tmp->setY(Y / 2 - 2 + i);
-		this->pushMarine(tmp);
-		tmp = boss->clone();
-		tmp->setX(300 + 1);
-		tmp->setY(Y / 2 - 2 + i);
-		this->pushMarine(tmp);
-	}
-}

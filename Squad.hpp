@@ -29,8 +29,6 @@ public:
 	int searchInterseption(Character &chr);
 	void dellDeadMarines();
 	void 	spawn();
-	void 	spawnBOSS();
-
 };
 
 
