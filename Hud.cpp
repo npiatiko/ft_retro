@@ -99,6 +99,8 @@ void Hud::drawHud ( int const &score, int const &lives ) const
 	Hud::drawSky();
 }
 
+
+
 void Hud::drawSky ( void ) const
 {
 	static int starty = 0;
@@ -128,11 +130,8 @@ void Hud::startPause ( void )
 	for (int i = Y / 2 - 3; i < (Y / 2 + 3); i++)
 		mvprintw(i, X / 2 - tmpString.length(), "%s", &tmpString[0]);
 	mvprintw(Y / 2 - 3, X / 2 - tmpString.length() / 2, "%s", "***********************");
-	mvprintw(Y / 2 - 2, X / 2 - tmpString.length() / 2, "%s", "*                     *");
-	mvprintw(Y / 2 - 1, X / 2 - tmpString.length() / 2, "%s", "*                     *");
-	mvprintw(Y / 2, X / 2 - tmpString.length() / 2, "%s", "*                     *");
-	mvprintw(Y / 2 + 1, X / 2 - tmpString.length() / 2, "%s", "*                     *");
-	mvprintw(Y / 2 + 2, X / 2 - tmpString.length() / 2, "%s", "*                     *");
+	for (int i = -2; i < 4; i++)
+		mvprintw(Y / 2 + i, X / 2 - tmpString.length() / 2, "%s", "*                     *");
 	mvprintw(Y / 2 + 3, X / 2 - tmpString.length() / 2, "%s", "***********************");
 	attrset(COLOR_PAIR(RED));
 	tmpString = "Game Paused";
@@ -146,6 +145,51 @@ void Hud::endPause ( void )
 	this->_pauseTime = time(NULL) - this->_pauseTime;
 	this->_start += this->_pauseTime;
 }
+
+void Hud::drawEndGame ( int const &score ) const
+{
+	std::stringstream tmpStream;
+	std::string tmpString;
+
+	attrset(COLOR_PAIR(YELLOW));
+	tmpStream << std::setfill(' ') << std::setw(41) << "";
+	tmpString = tmpStream.str();
+	for (int i = Y / 2 - 6; i < (Y / 2 + 6); i++)
+		mvprintw(i, X / 2 - tmpString.length(), "%s", &tmpString[0]);
+	mvprintw(Y / 2 - 6, X / 2 - tmpString.length() / 2, "%s", "*****************************************");
+	mvprintw(Y / 2 + 6, X / 2 - tmpString.length() / 2, "%s", "*****************************************");
+	for (int i = -5; i < 6; i++)
+		mvprintw(Y / 2 + i, X / 2 - tmpString.length() / 2, "%s", "*                                       *");
+	
+	attrset(COLOR_PAIR(RED));
+	mvprintw(Y / 2 - 3, X / 2 - std::string("Game Over").length() / 2, "%s", "Game Over");
+	mvprintw(Y / 2, X / 2 - tmpString.length() / 2 + 7, "%s", "Time spend: XX : XX (m:s)");
+	mvprintw(Y / 2 + 3, X / 2 - tmpString.length() / 2 + 7, "%s", "Your score:");
+
+	attrset(COLOR_PAIR(CYAN));
+	mvprintw(Y / 2, X / 2 - tmpString.length() / 2 + 19, "%s", &(this->getTimeString())[0]);
+	tmpStream.str("");
+	tmpStream << score;
+	mvprintw(Y / 2 + 3, X / 2 - tmpString.length() / 2 + 19, "%s", &(tmpStream.str())[0]);
+}
+
+
+/*
+
+*****************************************
+*                                       *
+*                                       *
+*               Game Over               *
+*                                       *
+*                                       *
+*       Time spend: XX : XX (m:s)       *
+*                                       *
+*       Your score:                     *
+*                                       *
+*                                       *
+*****************************************
+
+ */
 
 /*
 
