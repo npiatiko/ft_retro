@@ -75,8 +75,12 @@ void Squad::popMarine(Marine *marine) {
 }
 
 void Squad::dellDeadMarines() {
+//	int j = 0;
 	for (int i = 0; i < this->_count; ++i) {
-		if (this->_squad[i]->getX() == 0 || this->_squad[i]->getX() > X){
+//		mvprintw(73,40, "POP!!!!%5d", i);
+//		refresh();
+		if (this->_squad[i]->getX() == 0 || this->_squad[i]->getX() > X || this->_squad[i]->getHP() <= 0){
+
 			popMarine(this->_squad[i]);
 		}
 	}
@@ -105,27 +109,28 @@ int Squad::searchInterseption() {
 					 !(this->_squad[j]->getType().compare("pirate"))) ||
 					(!(this->_squad[j]->getType().compare("bullet")) &&
 					 !(this->_squad[i]->getType().compare("pirate")))) {
-					mvprintw(66, 10, "squad[j] = %s", &(this->_squad[j]->getType())[0]);
-					mvprintw(67, 10, "squad[j] = %s", &(this->_squad[i]->getType())[0]);
-					this->popMarine(this->_squad[i]);
-					this->popMarine(this->_squad[j - 1]);
+					this->_squad[i]->decrement();
+					this->_squad[j]->decrement();
 					tmp += 20;
-					i--;
-					break;
 				}
 				if ((!(this->_squad[i]->getType().compare("bullet")) &&
 					 !(this->_squad[j]->getType().compare("enemybullet"))) ||
 					(!(this->_squad[j]->getType().compare("bullet")) &&
 					 !(this->_squad[i]->getType().compare("enemybullet")))) {
-					mvprintw(66, 10, "squad[j] = %s", &(this->_squad[j]->getType())[0]);
-					mvprintw(67, 10, "squad[j] = %s", &(this->_squad[i]->getType())[0]);
-					this->popMarine(this->_squad[i]);
-					this->popMarine(this->_squad[j - 1]);
+					this->_squad[i]->decrement();
+					this->_squad[j]->decrement();
 					tmp += 5;
-					i--;
-					break;
 				}
-
+//				if (!(this->_squad[i]->getType().compare("character")) &&
+//					!(this->_squad[j]->getType().compare("enemybullet"))) {
+//					this->popMarine(this->_squad[j]);
+//				}
+//				if (!(this->_squad[j]->getType().compare("character")) &&
+//					!(this->_squad[i]->getType().compare("enemybullet"))) {
+//					this->popMarine(this->_squad[i]);
+//					i--;
+//					break;
+//				}
 			}
 		}
 	}

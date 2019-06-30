@@ -35,14 +35,14 @@ void Game::play() {
 	nodelay(stdscr, true);
 	while (true) {
 		usleep(6000);
-		clear();
+		werase(stdscr);
 		_hud.drawHud(this->_score, ranger.getHP());
-		ranger.drawmarine();
 		getSquad().spawn();
-		getSquad().dellDeadMarines();
 		getSquad().action();
 		this->_score += getSquad().searchInterseption();
+		getSquad().dellDeadMarines();
 		getSquad().drawSquad();
+		ranger.drawmarine();
 		refresh();
 		if ((key = getch()) == 'q'){
 			break;

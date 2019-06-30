@@ -63,3 +63,8 @@ long double Marine::gettimeAttack() {
 
 	return delay;
 }
+void Marine::decrement() {
+	(this->_hp)--;
+//	mvprintw(73,40, "DECREMENT!!!!");
+//	refresh();
+}
