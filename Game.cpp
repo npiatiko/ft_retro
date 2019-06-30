@@ -37,9 +37,9 @@ void Game::play() {
 		clear();
 		_hud.drawHud();
 		ranger.drawmarine();
-		getSquad().drawSquad();
-		getSquad().action();
 		getSquad().dellDeadMarines();
+		getSquad().action();
+		getSquad().drawSquad();
 		refresh();
 		if ((key = getch()) == 'q'){
 			break;
@@ -78,7 +78,7 @@ void Game::keyControl(int key) {
 			break;
 		}
 		case ' ':{
-			this->getSquad().pushMarine(new Bullet(this->ranger));
+			Game::getSquad().pushMarine(new Bullet(this->ranger));
 		}
 		default:
 			break;
