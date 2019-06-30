@@ -20,7 +20,10 @@ SRCS = main.cpp\
 		Character.cpp\
 		Marine.cpp\
 		Squad.cpp\
-		Fighter.cpp
+		Fighter.cpp\
+		Interceptor.cpp\
+		Bomber.cpp\
+		Raptor.cpp
 
 OBJ = $(SRCS:.cpp=.o)
 

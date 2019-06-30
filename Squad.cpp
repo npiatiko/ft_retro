@@ -3,8 +3,13 @@
 //
 
 #include "Squad.hpp"
+#include "Fighter.hpp"
+#include "Interceptor.hpp"
+#include "Bomber.hpp"
+#include "Raptor.hpp"
 
 Squad::Squad() :_count(10){
+	srand(time(NULL));
 	this->_squad = new Marine *[this->_count];
 	this->learnMarines();
 	for (int i = 0; i < this->_count; ++i) {
@@ -37,7 +42,13 @@ void Squad::drawSquad() {
 }
 void Squad::learnMarines() {
 	this->_source[0] = new Fighter();
-	this->_source[1] = new Fighter();
-	this->_source[2] = new Fighter();
-	this->_source[3] = new Fighter();
+	this->_source[1] = new Interceptor();
+	this->_source[2] = new Bomber();
+	this->_source[3] = new Raptor();
+}
+void Squad::action() {
+	for (int i = 0; i < this->_count; ++i) {
+		this->_squad[i]->movemarine();
+	}
+
 }

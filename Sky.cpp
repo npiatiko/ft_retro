@@ -35,11 +35,11 @@ void Sky::drawSky() {
 	for (int i = 0; i < Y; ++i) {
 		for (int j = 0; j < X; ++j) {
 			attrset(GRAY);
-			mvaddch(i, j, this->_sky[i][(j + starty) % 361]);
+			mvaddch(i, j, this->_sky[i][(j + starty) % X]);
 		}
 	}
 	speed = speed ? speed - 1 : 3;
 	if (speed == 3) {
-		starty = starty == 361 ? 0 : starty + 1;
+		starty = starty == X ? 0 : starty + 1;
 	}
 }

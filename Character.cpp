@@ -29,7 +29,6 @@ Character &Character::operator=(Character const &) {
 
 void Character::drawmarine() {
 	Marine::drawmarine();
-
 }
 
 void Character::setX(int x) {
@@ -43,6 +42,7 @@ void Character::setY(int y) {
 		_y = _y + y;
 	}
 }
+
 Marine *Character::clone() const {
 	return NULL;
 }

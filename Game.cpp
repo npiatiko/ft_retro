@@ -37,6 +37,7 @@ void Game::play() {
 		this->_sky.drawSky();
 		ranger.drawmarine();
 		_squad.drawSquad();
+		_squad.action();
 		refresh();
 		if ((key = getch()) == ' '){
 			break;
@@ -47,9 +48,13 @@ void Game::play() {
 }
 void Game::initColor() {
 
-	init_pair(GREEN, COLOR_GREEN, 0);
 	init_pair(GRAY, 8, 0);
+	init_pair(GREEN, COLOR_GREEN, 0);
 	init_pair(YELLOW, COLOR_YELLOW, 0);
+	init_pair(BLUE, COLOR_BLUE, 0);
+	init_pair(RED, COLOR_RED, 0);
+	init_pair(CYAN, COLOR_CYAN, 0);
+	init_pair(RAPTOR, COLOR_RED, COLOR_YELLOW);
 }
 void Game::keyControl(int key) {
 	switch (key){
@@ -69,8 +74,8 @@ void Game::keyControl(int key) {
 			this->ranger.setX(1);
 			break;
 		}
-//		default:
-//			break;
+		default:
+			break;
 	}
 
 }

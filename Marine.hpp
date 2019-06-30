@@ -16,6 +16,7 @@ protected:
 	int			_y;
 	Marine();
 	std::string	_type;
+	clock_t 	_clocks;
 
 public:
 	virtual ~Marine() {}
@@ -23,6 +24,8 @@ public:
 	Marine &operator=(Marine const &rhs);
 	virtual void drawmarine();
 	virtual Marine *clone()const = 0;
+	virtual void movemarine();
+	float gettime();
 };
 
 

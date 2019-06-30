@@ -18,6 +18,7 @@ public:
 	Fighter &operator=(Fighter const &rhs);
 	void drawmarine();
 	Marine *clone()const;
+	void movemarine();
 };
 
 

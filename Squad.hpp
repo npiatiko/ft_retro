@@ -5,7 +5,6 @@
 #ifndef SQUAD_HPP
 #define SQUAD_HPP
 #include "Marine.hpp"
-#include "Fighter.hpp"
 
 
 class Squad {
@@ -21,6 +20,7 @@ public:
 	Squad(const Squad &obj);
 	Squad &operator=(Squad const &rhs);
 	void drawSquad();
+	void action();
 
 };
 
