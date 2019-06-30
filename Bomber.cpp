@@ -49,3 +49,6 @@ void Bomber::movemarine() {
 		}
 	}
 }
+void Bomber::attack() {
+	Marine::attack();
+}

@@ -50,3 +50,5 @@ void Fighter::movemarine() {
 		}
 	}
 }
+void Fighter::attack() {
+}

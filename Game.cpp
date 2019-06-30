@@ -6,6 +6,7 @@
 #include <ncurses.h>
 #include <zconf.h>
 #include "Colors.hpp"
+#include "Bullet.hpp"
 
 Game::Game() {
 	initscr();
@@ -36,11 +37,11 @@ void Game::play() {
 		clear();
 		_hud.drawHud();
 		ranger.drawmarine();
-		_squad.drawSquad();
-		_squad.action();
-		_squad.dellDeadMarines();
+		getSquad().dellDeadMarines();
+		getSquad().action();
+		getSquad().drawSquad();
 		refresh();
-		if ((key = getch()) == ' '){
+		if ((key = getch()) == 'q'){
 			break;
 		} else{
 			this->keyControl(key);
@@ -76,8 +77,15 @@ void Game::keyControl(int key) {
 			this->ranger.setX(1);
 			break;
 		}
+		case ' ':{
+			Game::getSquad().pushMarine(new Bullet(this->ranger));
+		}
 		default:
 			break;
 	}
 
+}
+Squad &Game::getSquad() {
+	static Squad s;
+	return s;
 }

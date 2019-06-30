@@ -3,6 +3,8 @@
 //
 #include "Colors.hpp"
 #include "Raptor.hpp"
+#include "Game.hpp"
+#include "EnemyBullet.hpp"
 
 Raptor::Raptor() :Marine(){
 	this->color = COLOR_PAIR(RAPTOR);
@@ -47,5 +49,12 @@ void Raptor::movemarine() {
 		this->dy = -1;
 	} else if (this->_y <= 1){
 		this->dy = 1;
+	}
+}
+void Raptor::attack() {
+	if (this->gettimeAttack() > 0.1) {
+		Game::getSquad().pushMarine(new EnemyBullet(*this));
+		Game::getSquad().pushMarine(new EnemyBullet(*this));
+		Marine::attack();
 	}
 }
