@@ -33,22 +33,22 @@ void Game::play() {
 	int key;
 
 	nodelay(stdscr, true);
-	while (true) {
+	while (ranger.getHP() > 0) {
 		usleep(6000);
 		werase(stdscr);
 		_hud.drawHud(this->_score, ranger.getHP());
 		getSquad().spawn();
 		getSquad().action();
-		this->_score += getSquad().searchInterseption();
-		getSquad().dellDeadMarines();
-		getSquad().drawSquad();
-		ranger.drawmarine();
-		refresh();
 		if ((key = getch()) == 'q'){
 			break;
 		} else{
 			this->keyControl(key);
 		}
+		this->_score += getSquad().searchInterseption(ranger);
+		getSquad().dellDeadMarines();
+		getSquad().drawSquad();
+		ranger.drawmarine();
+		refresh();
 	}
 }
 void Game::initColor() {

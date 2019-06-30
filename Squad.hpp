@@ -5,7 +5,7 @@
 #ifndef SQUAD_HPP
 #define SQUAD_HPP
 #include "Marine.hpp"
-
+#include "Character.hpp"
 
 class Squad {
 private:
@@ -25,7 +25,7 @@ public:
 	void action();
 	void popMarine(Marine *);
 	void pushMarine(Marine *);
-	int searchInterseption();
+	int searchInterseption(Character &chr);
 	void dellDeadMarines();
 	void 	spawn();
 

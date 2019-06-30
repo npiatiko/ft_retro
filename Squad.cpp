@@ -98,7 +98,7 @@ void Squad::pushMarine(Marine *newMarine) {
 	this->_count++;
 	delete[](tmp);
 }
-int Squad::searchInterseption() {
+int Squad::searchInterseption(Character &chr) {
 	int tmp = 0;
 
 	for (int i = 0; i < this->_count; ++i) {
@@ -121,17 +121,11 @@ int Squad::searchInterseption() {
 					this->_squad[j]->decrement();
 					tmp += 5;
 				}
-//				if (!(this->_squad[i]->getType().compare("character")) &&
-//					!(this->_squad[j]->getType().compare("enemybullet"))) {
-//					this->popMarine(this->_squad[j]);
-//				}
-//				if (!(this->_squad[j]->getType().compare("character")) &&
-//					!(this->_squad[i]->getType().compare("enemybullet"))) {
-//					this->popMarine(this->_squad[i]);
-//					i--;
-//					break;
-//				}
 			}
+		}
+		if(chr.getX()==this->_squad[i]->getX() && chr.getY()==this->_squad[i]->getY() && this->_squad[i]->getType().compare("bullet")){
+			this->_squad[i]->decrement();
+			chr.decrement();
 		}
 	}
 	return tmp;
