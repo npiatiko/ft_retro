@@ -9,7 +9,7 @@
 #include "Bomber.hpp"
 #include "Raptor.hpp"
 
-Squad::Squad() :_count(10){
+Squad::Squad() :_count(10), _spawnClock(clock()){
 	srand(time(NULL));
 	this->_squad = new Marine *[this->_count];
 	this->learnMarines();
@@ -75,8 +75,12 @@ void Squad::popMarine(Marine *marine) {
 }
 
 void Squad::dellDeadMarines() {
+//	int j = 0;
 	for (int i = 0; i < this->_count; ++i) {
-		if (this->_squad[i]->getX() == 0 || this->_squad[i]->getX() > X){
+//		mvprintw(73,40, "POP!!!!%5d", i);
+//		refresh();
+		if (this->_squad[i]->getX() == 0 || this->_squad[i]->getX() > X || this->_squad[i]->getHP() <= 0){
+
 			popMarine(this->_squad[i]);
 		}
 	}
@@ -94,7 +98,7 @@ void Squad::pushMarine(Marine *newMarine) {
 	this->_count++;
 	delete[](tmp);
 }
-int Squad::searchInterseption() {
+int Squad::searchInterseption(Character &chr) {
 	int tmp = 0;
 
 	for (int i = 0; i < this->_count; ++i) {
@@ -105,29 +109,31 @@ int Squad::searchInterseption() {
 					 !(this->_squad[j]->getType().compare("pirate"))) ||
 					(!(this->_squad[j]->getType().compare("bullet")) &&
 					 !(this->_squad[i]->getType().compare("pirate")))) {
-					mvprintw(66, 10, "squad[j] = %s", &(this->_squad[j]->getType())[0]);
-					mvprintw(67, 10, "squad[j] = %s", &(this->_squad[i]->getType())[0]);
-					this->popMarine(this->_squad[i]);
-					this->popMarine(this->_squad[j - 1]);
+					this->_squad[i]->decrement();
+					this->_squad[j]->decrement();
 					tmp += 20;
-					i--;
-					break;
 				}
 				if ((!(this->_squad[i]->getType().compare("bullet")) &&
 					 !(this->_squad[j]->getType().compare("enemybullet"))) ||
 					(!(this->_squad[j]->getType().compare("bullet")) &&
 					 !(this->_squad[i]->getType().compare("enemybullet")))) {
-					mvprintw(66, 10, "squad[j] = %s", &(this->_squad[j]->getType())[0]);
-					mvprintw(67, 10, "squad[j] = %s", &(this->_squad[i]->getType())[0]);
-					this->popMarine(this->_squad[i]);
-					this->popMarine(this->_squad[j - 1]);
+					this->_squad[i]->decrement();
+					this->_squad[j]->decrement();
 					tmp += 5;
-					i--;
-					break;
 				}
-
 			}
+		}
+		if(chr.getX()==this->_squad[i]->getX() && chr.getY()==this->_squad[i]->getY() && this->_squad[i]->getType().compare("bullet")){
+			this->_squad[i]->decrement();
+			chr.decrement();
 		}
 	}
 	return tmp;
+}
+void Squad::spawn() {
+	if (((long double)(clock() - this->_spawnClock) / CLOCKS_PER_SEC) > 0.5){
+		this->pushMarine(this->_source[rand() % 4]->clone());
+		this->_spawnClock = clock();
+	}
+
 }

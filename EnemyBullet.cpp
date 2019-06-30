@@ -20,7 +20,7 @@ EnemyBullet::EnemyBullet(const EnemyBullet &obj) {
 	this->_y = obj._y;
 	this->color = COLOR_PAIR(RED) | A_BOLD;
 	this->_char = '-';
-	this->_hp = 20;
+	this->_hp = 1;
 	this->_type = "enemybullet";
 	this->_clocks = clock();
 
@@ -31,7 +31,7 @@ EnemyBullet::EnemyBullet(const Marine &obj) {
 	this->_y = obj.getY();
 	this->color = COLOR_PAIR(RED) | A_BOLD;
 	this->_char = '<';
-	this->_hp = 20;
+	this->_hp = 1;
 	this->_type = "enemybullet";
 	this->_clocks = clock();
 }

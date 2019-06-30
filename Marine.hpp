@@ -33,6 +33,7 @@ public:
 	int getX() const;
 	int getY() const;
 	int getHP ( void ) const;
+	void decrement();
 };
 
 
