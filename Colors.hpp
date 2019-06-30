@@ -11,7 +11,7 @@
 # define CYAN	14
 #define YELLOW	15
 #define RAPTOR	16
-#define Y 70
+#define Y 65
 #define X 350
 #include <ncurses.h>
 

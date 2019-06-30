@@ -39,6 +39,10 @@ void Game::play() {
 		_squad.drawSquad();
 		_squad.action();
 		_squad.dellDeadMarines();
+		for (int i = 0; i < 10; ++i) {
+			attrset(COLOR_PAIR(RAPTOR));
+			mvprintw(65 + i, 20, "line:%d", i);
+		}
 		refresh();
 		if ((key = getch()) == ' '){
 			break;
