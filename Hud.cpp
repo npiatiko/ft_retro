@@ -122,7 +122,6 @@ void Hud::drawHud ( void ) const
 	tmpString = tmpStream.str();
 	mvprintw(Y + 5, X / 3 * 2 + X / 6 - tmpString.length() / 2, "%s", &tmpString[0]);
 	Hud::drawSky();
-	Hud::drawPause();
 }
 
 void Hud::drawSky ( void ) const
@@ -163,6 +162,8 @@ void Hud::startPause ( void )
 	attrset(COLOR_PAIR(RED));
 	tmpString = "Game Paused";
 	mvprintw(Y / 2, X / 2 - tmpString.length() / 2, "%s", &tmpString[0]);
+
+	refresh();
 }
 
 void Hud::endPause ( void )

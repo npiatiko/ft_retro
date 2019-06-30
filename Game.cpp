@@ -84,12 +84,14 @@ void Game::keyControl(int key) {
 		}
 		case 'p':{
 			nodelay(stdscr, false);
+			_hud.startPause();
 			while (true){
 				if (getch() == 'p'){
 					nodelay(stdscr, true);
 					break;
 				}
 			}
+			_hud.endPause();
 			break;
 		}
 		default:
