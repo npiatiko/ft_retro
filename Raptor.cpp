@@ -3,6 +3,7 @@
 //
 #include "Colors.hpp"
 #include "Raptor.hpp"
+#include "Game.hpp"
 
 Raptor::Raptor() :Marine(){
 	this->color = COLOR_PAIR(RAPTOR);
@@ -48,4 +49,6 @@ void Raptor::movemarine() {
 	} else if (this->_y <= 1){
 		this->dy = 1;
 	}
+}
+void Raptor::attack() {
 }

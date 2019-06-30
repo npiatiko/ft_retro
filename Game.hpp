@@ -23,6 +23,7 @@ public:
 	Game(const Game &obj);
 	Game &operator=(Game const &rhs);
 	void play();
+//	static Squad const &getSquad();
 };
 
 

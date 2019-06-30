@@ -41,3 +41,9 @@ float Marine::gettime() {
 int Marine::getX() const {
 	return _x;
 }
+int Marine::getY() const {
+	return _y;
+}
+void Marine::attack() {
+
+}

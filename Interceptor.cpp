@@ -42,3 +42,6 @@ void Interceptor::movemarine() {
 		Marine::movemarine();
 	}
 }
+void Interceptor::attack() {
+
+}

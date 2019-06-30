@@ -25,8 +25,10 @@ public:
 	virtual void drawmarine();
 	virtual Marine *clone()const = 0;
 	virtual void movemarine();
+	virtual void attack();
 	float gettime();
 	int getX() const;
+	int getY() const;
 };
 
 
