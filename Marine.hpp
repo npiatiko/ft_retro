@@ -32,6 +32,7 @@ public:
 	long double gettimeAttack();
 	int getX() const;
 	int getY() const;
+	int getHP ( void ) const;
 };
 
 

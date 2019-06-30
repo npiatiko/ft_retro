@@ -9,7 +9,7 @@
 Interceptor::Interceptor() :Marine(){
 	this->color = COLOR_PAIR(BLUE) | A_BOLD;
 	this->_char = '<';
-	this->_hp = 10;
+	this->_hp = 1;
 	this->_type = "pirate";
 }
 

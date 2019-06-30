@@ -14,6 +14,7 @@ Game::Game() {
 	curs_set(0);
 	start_color();
 	this->initColor();
+	_score = 0;
 }
 Game::~Game() {
 	mvprintw(50, 50, "press any key");
@@ -35,12 +36,12 @@ void Game::play() {
 	while (true) {
 		usleep(6000);
 		clear();
-		_hud.drawHud();
+		_hud.drawHud(this->_score, ranger.getHP());
 		ranger.drawmarine();
 		getSquad().spawn();
 		getSquad().dellDeadMarines();
 		getSquad().action();
-		getSquad().searchInterseption();
+		this->_score += getSquad().searchInterseption();
 		getSquad().drawSquad();
 		refresh();
 		if ((key = getch()) == 'q'){

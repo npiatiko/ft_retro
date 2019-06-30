@@ -15,7 +15,7 @@ private:
 	void initColor();
 	void keyControl(int key);
 	Hud _hud;
-
+	int _score;
 public:
 	static Squad &getSquad();
 	Game();

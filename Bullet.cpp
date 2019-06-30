@@ -8,7 +8,7 @@
 Bullet::Bullet() : Marine(){
 	this->color = COLOR_PAIR(YELLOW) | A_BOLD;
 	this->_char = '-';
-	this->_hp = 20;
+	this->_hp = 1;
 	this->_type = "bullet";
 }
 Bullet::~Bullet() {

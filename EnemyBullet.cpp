@@ -7,7 +7,7 @@
 EnemyBullet::EnemyBullet() :Marine(){
 	this->color = COLOR_PAIR(RED) | A_BOLD;
 	this->_char = '-';
-	this->_hp = 20;
+	this->_hp = 1;
 	this->_type = "enemybullet";
 
 }
