@@ -17,9 +17,12 @@ Game::Game() {
 	_score = 0;
 }
 Game::~Game() {
-	mvprintw(50, 50, "press any key");
-	refresh();
-	getch();
+	nodelay(stdscr, false);
+	while (true) {
+		if (getch() == 'q'){
+			break;
+		}
+	}
 	endwin();
 	system("leaks -q ft_retro");
 }
@@ -50,6 +53,7 @@ void Game::play() {
 		ranger.drawmarine();
 		refresh();
 	}
+	this->_hud.drawEndGame(this->_score);
 }
 void Game::initColor() {
 
@@ -60,7 +64,7 @@ void Game::initColor() {
 	init_pair(RED, COLOR_RED, 0);
 	init_pair(CYAN, COLOR_CYAN, 0);
 	init_pair(RAPTOR, COLOR_RED, COLOR_YELLOW);
-	init_pair(BORDER, COLOR_YELLOW, COLOR_YELLOW);
+	init_pair(BORDER, RED, GRAY);
 }
 void Game::keyControl(int key) {
 	switch (key){

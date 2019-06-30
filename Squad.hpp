@@ -10,10 +10,11 @@
 class Squad {
 private:
 	Marine	**_squad;
-	Marine	*_source[4];
+	Marine	*_source[5];
 	int		_count;
 	void	learnMarines();
 	clock_t _spawnClock;
+	clock_t _spawnBOSS;
 
 
 public:
@@ -28,6 +29,7 @@ public:
 	int searchInterseption(Character &chr);
 	void dellDeadMarines();
 	void 	spawn();
+	void 	spawnBOSS();
 
 };
 

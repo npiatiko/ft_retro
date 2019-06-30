@@ -68,3 +68,9 @@ void Marine::decrement() {
 //	mvprintw(73,40, "DECREMENT!!!!");
 //	refresh();
 }
+void Marine::setX(int x) {
+	_x = x;
+}
+void Marine::setY(int y) {
+	_y = y;
+}

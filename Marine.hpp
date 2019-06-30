@@ -34,6 +34,8 @@ public:
 	int getY() const;
 	int getHP ( void ) const;
 	void decrement();
+	void setX(int x);
+	void setY(int y);
 };
 
 
