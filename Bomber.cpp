@@ -3,6 +3,8 @@
 //
 #include "Colors.hpp"
 #include "Bomber.hpp"
+#include "EnemyBullet.hpp"
+#include "Game.hpp"
 
 Bomber::Bomber() : Marine(){
 	this->color = COLOR_PAIR(CYAN) | A_BOLD;
@@ -50,5 +52,8 @@ void Bomber::movemarine() {
 	}
 }
 void Bomber::attack() {
-	Marine::attack();
+	if (this->gettimeAttack() > 0.3) {
+		Game::getSquad().pushMarine(new EnemyBullet(*this));
+		Marine::attack();
+	}
 }

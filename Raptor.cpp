@@ -52,8 +52,7 @@ void Raptor::movemarine() {
 	}
 }
 void Raptor::attack() {
-	if (this->gettimeAttack() > 0.1) {
-		Game::getSquad().pushMarine(new EnemyBullet(*this));
+	if (this->gettimeAttack() > 0.5) {
 		Game::getSquad().pushMarine(new EnemyBullet(*this));
 		Marine::attack();
 	}

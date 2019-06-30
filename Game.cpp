@@ -39,6 +39,7 @@ void Game::play() {
 		ranger.drawmarine();
 		getSquad().dellDeadMarines();
 		getSquad().action();
+		getSquad().searchInterseption();
 		getSquad().drawSquad();
 		refresh();
 		if ((key = getch()) == 'q'){
@@ -79,6 +80,17 @@ void Game::keyControl(int key) {
 		}
 		case ' ':{
 			Game::getSquad().pushMarine(new Bullet(this->ranger));
+			break;
+		}
+		case 'p':{
+			nodelay(stdscr, false);
+			while (true){
+				if (getch() == 'p'){
+					nodelay(stdscr, true);
+					break;
+				}
+			}
+			break;
 		}
 		default:
 			break;
