@@ -4,12 +4,22 @@
 
 #include "Squad.hpp"
 
-Squad::Squad() {
-
+Squad::Squad() :_count(10){
+	this->_squad = new Marine *[this->_count];
+	this->learnMarines();
+	for (int i = 0; i < this->_count; ++i) {
+		this->_squad[i] = this->_source[rand() % 4]->clone();
+	}
 }
 
 Squad::~Squad() {
-
+	for (int i = 0; i < 4; ++i) {
+		delete (this->_source[i]);
+	}
+	for (int j = 0; j < this->_count; ++j) {
+		delete this->_squad[j];
+	}
+	delete[](this->_squad);
 }
 
 Squad::Squad(const Squad &) {
@@ -20,8 +30,14 @@ Squad &Squad::operator=(Squad const &) {
 	return *this;
 }
 void Squad::drawSquad() {
-	for (int i = 0; i < 10; ++i) {
-		this->_squad[i].drawmarine();
+	for (int i = 0; i < this->_count; ++i) {
+		this->_squad[i]->drawmarine();
 	}
 
+}
+void Squad::learnMarines() {
+	this->_source[0] = new Fighter();
+	this->_source[1] = new Fighter();
+	this->_source[2] = new Fighter();
+	this->_source[3] = new Fighter();
 }

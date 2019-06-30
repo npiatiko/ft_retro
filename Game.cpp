@@ -19,6 +19,7 @@ Game::~Game() {
 	refresh();
 	getch();
 	endwin();
+	system("leaks -q ft_retro");
 }
 Game::Game(const Game &) {
 
@@ -43,7 +44,6 @@ void Game::play() {
 			this->keyControl(key);
 		}
 	}
-
 }
 void Game::initColor() {
 

@@ -43,3 +43,6 @@ void Character::setY(int y) {
 		_y = _y + y;
 	}
 }
+Marine *Character::clone() const {
+	return NULL;
+}

@@ -8,6 +8,7 @@
 
 class Character : public Marine{
 private:
+	Marine *clone()const;
 
 public:
 	Character();

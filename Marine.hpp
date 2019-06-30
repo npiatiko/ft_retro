@@ -14,14 +14,15 @@ protected:
 	int 		_hp;
 	int			_x;
 	int			_y;
+	Marine();
 	std::string	_type;
 
 public:
-	Marine();
-	~Marine();
+	virtual ~Marine() {}
 	Marine(const Marine &obj);
 	Marine &operator=(Marine const &rhs);
 	virtual void drawmarine();
+	virtual Marine *clone()const = 0;
 };
 
 

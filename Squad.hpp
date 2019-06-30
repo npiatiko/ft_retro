@@ -5,12 +5,15 @@
 #ifndef SQUAD_HPP
 #define SQUAD_HPP
 #include "Marine.hpp"
-#include "Pirates.hpp"
+#include "Fighter.hpp"
 
 
 class Squad {
 private:
-	Pirates _squad[10];
+	Marine	**_squad;
+	Marine	*_source[4];
+	int		_count;
+	void	learnMarines();
 
 public:
 	Squad();
