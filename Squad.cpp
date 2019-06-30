@@ -94,18 +94,40 @@ void Squad::pushMarine(Marine *newMarine) {
 	this->_count++;
 	delete[](tmp);
 }
-void Squad::searchInterseption() {
-//	Marine **tmp = this->_squad;
+int Squad::searchInterseption() {
+	int tmp = 0;
 
 	for (int i = 0; i < this->_count; ++i) {
 		for (int j = i + 1; j < this->_count; ++j) {
 			if (this->_squad[i]->getX() == this->_squad[j]->getX() &&
 				this->_squad[i]->getY() == this->_squad[j]->getY()) {
-//				if (this->_squad[i]->getType() == "bullet" && this->_squad[j]->getType() == "pirate") {
-				this->popMarine(this->_squad[i]);
-				this->popMarine(this->_squad[j - 1]);
-				break;
+				if ((!(this->_squad[i]->getType().compare("bullet")) &&
+					 !(this->_squad[j]->getType().compare("pirate"))) ||
+					(!(this->_squad[j]->getType().compare("bullet")) &&
+					 !(this->_squad[i]->getType().compare("pirate")))) {
+					mvprintw(66, 10, "squad[j] = %s", &(this->_squad[j]->getType())[0]);
+					mvprintw(67, 10, "squad[j] = %s", &(this->_squad[i]->getType())[0]);
+					this->popMarine(this->_squad[i]);
+					this->popMarine(this->_squad[j - 1]);
+					tmp += 20;
+					i--;
+					break;
+				}
+				if ((!(this->_squad[i]->getType().compare("bullet")) &&
+					 !(this->_squad[j]->getType().compare("enemybullet"))) ||
+					(!(this->_squad[j]->getType().compare("bullet")) &&
+					 !(this->_squad[i]->getType().compare("enemybullet")))) {
+					mvprintw(66, 10, "squad[j] = %s", &(this->_squad[j]->getType())[0]);
+					mvprintw(67, 10, "squad[j] = %s", &(this->_squad[i]->getType())[0]);
+					this->popMarine(this->_squad[i]);
+					this->popMarine(this->_squad[j - 1]);
+					tmp += 5;
+					i--;
+					break;
+				}
+
 			}
 		}
 	}
+	return tmp;
 }

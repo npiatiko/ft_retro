@@ -23,7 +23,7 @@ public:
 	void action();
 	void popMarine(Marine *);
 	void pushMarine(Marine *);
-	void searchInterseption();
+	int searchInterseption();
 	void dellDeadMarines();
 
 };
