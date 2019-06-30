@@ -9,7 +9,7 @@
 Raptor::Raptor() :Marine(){
 	this->color = COLOR_PAIR(RAPTOR);
 	this->_char = ']';
-	this->_hp = 35;
+	this->_hp = 1;
 	this->_type = "pirate";
 	this->dy = 1;
 }

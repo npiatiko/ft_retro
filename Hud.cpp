@@ -1,19 +1,6 @@
 #include "Hud.hpp"
 
-Hud::Hud ( void ): _score(0),
-					_lives(5)
-{
-	this->_start = time(NULL);
-	for (int i = 0; i < Y; ++i)
-		for (int j = 0; j < X; ++j)
-			if (rand() % 100 == 1)
-				this->_sky[i][j] = '.';
-			else
-				this->_sky[i][j] = ' ';
-}
-
-Hud::Hud ( unsigned int const &score, unsigned int &lives ): _score(score),
-																_lives(lives)
+Hud::Hud ( void )
 {
 	this->_start = time(NULL);
 	for (int i = 0; i < Y; ++i)
@@ -38,8 +25,6 @@ Hud& Hud::operator= ( Hud const &assig )
 {
 	if (this == &assig)
 		return (*this);
-	this->_score = assig.getScore();
-	this->_lives = assig.getLives();
 	this->_start = assig.getStart();
 	for (int i = 0; i < Y; ++i)
 	{
@@ -50,16 +35,6 @@ Hud& Hud::operator= ( Hud const &assig )
 
 	}
 	return (*this);
-}
-
-unsigned int Hud::getScore ( void ) const
-{
-	return (this->_score);
-}
-
-unsigned int Hud::getLives ( void ) const
-{
-	return (this->_lives);
 }
 
 time_t Hud::getStart ( void ) const
@@ -87,7 +62,7 @@ char Hud::getSkyXY ( int const &x, int const &y ) const
 	return (this->_sky[y][x]);
 }
 
-void Hud::drawHud ( void ) const
+void Hud::drawHud ( int const &score, int const &lives ) const
 {
 	std::stringstream tmpStream;
 	std::string tmpString;
@@ -110,7 +85,7 @@ void Hud::drawHud ( void ) const
 	attrset(COLOR_PAIR(RED));
 
 	tmpStream.str("");
-	tmpStream << "Score: " << this->getScore();
+	tmpStream << "Score: " << score;
 	tmpString = tmpStream.str();
 	mvprintw(Y + 5, X / 6 - tmpString.length() / 2, "%s", &tmpString[0]);
 
@@ -118,7 +93,7 @@ void Hud::drawHud ( void ) const
 	mvprintw(Y + 5, X / 3 + X / 6 - tmpString.length() / 2, "%s", &tmpString[0]);
 
 	tmpStream.str("");
-	tmpStream << "Lives: " << this->getLives() << " / 5";
+	tmpStream << "Lives: " << lives << " / 5";
 	tmpString = tmpStream.str();
 	mvprintw(Y + 5, X / 3 * 2 + X / 6 - tmpString.length() / 2, "%s", &tmpString[0]);
 	Hud::drawSky();

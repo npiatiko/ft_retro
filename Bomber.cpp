@@ -9,7 +9,7 @@
 Bomber::Bomber() : Marine(){
 	this->color = COLOR_PAIR(CYAN) | A_BOLD;
 	this->_char = '0';
-	this->_hp = 30;
+	this->_hp = 1;
 	this->_type = "pirate";
 	this->_dy = 1;
 }

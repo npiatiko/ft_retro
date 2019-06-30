@@ -45,6 +45,12 @@ int Marine::getX() const {
 int Marine::getY() const {
 	return _y;
 }
+
+int Marine::getHP ( void ) const
+{
+	return (this->_hp);
+}
+
 void Marine::attack() {
 	this->_lastAttack = clock();
 }

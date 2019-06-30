@@ -11,15 +11,12 @@
 class Hud
 {
 private:
-	unsigned int _score;
-	unsigned int _lives;
 	time_t _start;
 	char _sky[X][Y];
 	time_t _pauseTime;
 	void drawSky( void ) const;
 public:
 	Hud ( void );
-	Hud ( unsigned int const &, unsigned int & );
 	Hud ( Hud const & );
 	~Hud ( void );
 
@@ -32,7 +29,7 @@ public:
 	std::string getTimeString ( void ) const;
 	char getSkyXY ( int const &, int const & ) const;
 
-	void drawHud ( void ) const;
+	void drawHud ( int const &, int const & ) const;
 
 	void startPause ( void );
 	void endPause ( void );

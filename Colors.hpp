@@ -14,6 +14,6 @@
 # define BORDER	17
 # define Y 65
 # define X 350
-#include <ncurses.h>
+# include <ncurses.h>
 
 #endif //COLORS_HPP
