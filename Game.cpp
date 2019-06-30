@@ -34,15 +34,11 @@ void Game::play() {
 	while (true) {
 		usleep(6000);
 		clear();
-		this->_sky.drawSky();
+		_hud.drawHud();
 		ranger.drawmarine();
 		_squad.drawSquad();
 		_squad.action();
 		_squad.dellDeadMarines();
-		for (int i = 0; i < 10; ++i) {
-			attrset(COLOR_PAIR(RAPTOR));
-			mvprintw(65 + i, 20, "line:%d", i);
-		}
 		refresh();
 		if ((key = getch()) == ' '){
 			break;
@@ -60,6 +56,7 @@ void Game::initColor() {
 	init_pair(RED, COLOR_RED, 0);
 	init_pair(CYAN, COLOR_CYAN, 0);
 	init_pair(RAPTOR, COLOR_RED, COLOR_YELLOW);
+	init_pair(BORDER, COLOR_YELLOW, COLOR_YELLOW);
 }
 void Game::keyControl(int key) {
 	switch (key){
