@@ -3,6 +3,8 @@
 //
 #include "Fighter.hpp"
 #include "Colors.hpp"
+#include "Game.hpp"
+#include "EnemyBullet.hpp"
 
 Fighter::Fighter() : Marine(){
 	this->color = COLOR_PAIR(YELLOW) | A_BOLD;
@@ -51,4 +53,8 @@ void Fighter::movemarine() {
 	}
 }
 void Fighter::attack() {
+	if (this->gettimeAttack() > 0.1) {
+		Game::getSquad().pushMarine(new EnemyBullet(*this));
+		Marine::attack();
+	}
 }
