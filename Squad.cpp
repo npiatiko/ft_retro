@@ -8,13 +8,14 @@
 #include "Interceptor.hpp"
 #include "Bomber.hpp"
 #include "Raptor.hpp"
+#include "Asteroid.hpp"
 
-Squad::Squad() :_count(10), _spawnClock(clock()){
+Squad::Squad() :_count(10), _spawnClock(clock()), _spawnBOSS(clock()){
 	srand(time(NULL));
 	this->_squad = new Marine *[this->_count];
 	this->learnMarines();
 	for (int i = 0; i < this->_count; ++i) {
-		this->_squad[i] = this->_source[rand() % 4]->clone();
+		this->_squad[i] = this->_source[rand() % 5]->clone();
 	}
 }
 
@@ -48,6 +49,8 @@ void Squad::learnMarines() {
 	this->_source[1] = new Interceptor();
 	this->_source[2] = new Bomber();
 	this->_source[3] = new Raptor();
+	this->_source[4] = new Asteroid();
+
 }
 
 void Squad::action() {
@@ -66,7 +69,6 @@ void Squad::popMarine(Marine *marine) {
 			this->_squad[k] = tmp[j];
 			++k;
 		} else{
-			mvprintw(71, 10, "deleted:[%p]", tmp[j]);
 			delete tmp[j];
 		}
 	}
@@ -75,16 +77,12 @@ void Squad::popMarine(Marine *marine) {
 }
 
 void Squad::dellDeadMarines() {
-//	int j = 0;
 	for (int i = 0; i < this->_count; ++i) {
-//		mvprintw(73,40, "POP!!!!%5d", i);
-//		refresh();
 		if (this->_squad[i]->getX() == 0 || this->_squad[i]->getX() > X || this->_squad[i]->getHP() <= 0){
 
 			popMarine(this->_squad[i]);
 		}
 	}
-	mvprintw(72, 10, "count:[%d]", this->_count);
 }
 void Squad::pushMarine(Marine *newMarine) {
 
@@ -132,7 +130,7 @@ int Squad::searchInterseption(Character &chr) {
 }
 void Squad::spawn() {
 	if (((long double)(clock() - this->_spawnClock) / CLOCKS_PER_SEC) > 0.5){
-		this->pushMarine(this->_source[rand() % 4]->clone());
+		this->pushMarine(this->_source[rand() % 5]->clone());
 		this->_spawnClock = clock();
 	}
 
