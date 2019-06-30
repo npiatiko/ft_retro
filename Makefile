@@ -14,7 +14,8 @@ NAME = ft_retro
 
 FLAGS = -Wall -Wextra #-Werror
 
-SRCS = Game.cpp\
+SRCS =  main.cpp\
+		Game.cpp\
 		Character.cpp\
 		Marine.cpp\
 		Squad.cpp\
@@ -23,7 +24,8 @@ SRCS = Game.cpp\
 		Bomber.cpp\
 		Raptor.cpp\
 		Bullet.cpp\
-		EnemyBullet.cpp
+		EnemyBullet.cpp\
+		Hud.cpp
 
 OBJ_DIR = ./obj
 

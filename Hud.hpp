@@ -15,6 +15,7 @@ private:
 	unsigned int _lives;
 	time_t _start;
 	char _sky[X][Y];
+	time_t _pauseTime;
 	void drawSky( void ) const;
 public:
 	Hud ( void );
@@ -32,6 +33,9 @@ public:
 	char getSkyXY ( int const &, int const & ) const;
 
 	void drawHud ( void ) const;
+
+	void startPause ( void );
+	void endPause ( void );
 };
 
 

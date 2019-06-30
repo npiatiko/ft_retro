@@ -122,6 +122,7 @@ void Hud::drawHud ( void ) const
 	tmpString = tmpStream.str();
 	mvprintw(Y + 5, X / 3 * 2 + X / 6 - tmpString.length() / 2, "%s", &tmpString[0]);
 	Hud::drawSky();
+	Hud::drawPause();
 }
 
 void Hud::drawSky ( void ) const
@@ -139,3 +140,45 @@ void Hud::drawSky ( void ) const
 	if (speed == 3)
 		starty = starty == X ? 0 : starty + 1;
 }
+
+void Hud::startPause ( void )
+{
+	this->_pauseTime = time(NULL);
+
+	std::stringstream tmpStream;
+	std::string tmpString;
+
+	attrset(COLOR_PAIR(YELLOW));
+	tmpStream << std::setfill(' ') << std::setw(23) << "";
+	tmpString = tmpStream.str();
+	for (int i = Y / 2 - 3; i < (Y / 2 + 3); i++)
+		mvprintw(i, X / 2 - tmpString.length(), "%s", &tmpString[0]);
+	mvprintw(Y / 2 - 3, X / 2 - tmpString.length() / 2, "%s", "***********************");
+	mvprintw(Y / 2 - 2, X / 2 - tmpString.length() / 2, "%s", "*                     *");
+	mvprintw(Y / 2 - 1, X / 2 - tmpString.length() / 2, "%s", "*                     *");
+	mvprintw(Y / 2, X / 2 - tmpString.length() / 2, "%s", "*                     *");
+	mvprintw(Y / 2 + 1, X / 2 - tmpString.length() / 2, "%s", "*                     *");
+	mvprintw(Y / 2 + 2, X / 2 - tmpString.length() / 2, "%s", "*                     *");
+	mvprintw(Y / 2 + 3, X / 2 - tmpString.length() / 2, "%s", "***********************");
+	attrset(COLOR_PAIR(RED));
+	tmpString = "Game Paused";
+	mvprintw(Y / 2, X / 2 - tmpString.length() / 2, "%s", &tmpString[0]);
+}
+
+void Hud::endPause ( void )
+{
+	this->_pauseTime = time(NULL) - this->_pauseTime;
+	this->_start += this->_pauseTime;
+}
+
+/*
+
+***********************
+*                     *
+*                     *
+*     Game paused     *
+*                     *
+*                     *
+***********************
+
+ */
