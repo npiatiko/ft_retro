@@ -83,7 +83,6 @@ void Squad::dellDeadMarines() {
 			popMarine(this->_squad[i]);
 		}
 	}
-	mvprintw(72, 10, "count:[%d]", this->_count);
 }
 void Squad::pushMarine(Marine *newMarine) {
 
