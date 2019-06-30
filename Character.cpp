@@ -7,7 +7,7 @@
 
 Character::Character() {
 	this->_type = "character";
-	this->_hp = 100;
+	this->_hp = 5;
 	this->_char = '}';
 	this->_x = 5;
 	this->_y = 37;

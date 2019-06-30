@@ -14,34 +14,44 @@ NAME = ft_retro
 
 FLAGS = -Wall -Wextra #-Werror
 
-SRCS = main.cpp\
+SRCS =  main.cpp\
 		Game.cpp\
-		Sky.cpp\
 		Character.cpp\
 		Marine.cpp\
 		Squad.cpp\
 		Fighter.cpp\
 		Interceptor.cpp\
 		Bomber.cpp\
-		Raptor.cpp
+		Raptor.cpp\
+		Bullet.cpp\
+		EnemyBullet.cpp\
+		Hud.cpp
 
-OBJ = $(SRCS:.cpp=.o)
+OBJ_DIR = ./obj
 
-#INC = Contact.class.hpp\
-#     PhoneBook.class.hpp
+OBJ = $(addprefix $(OBJ_DIR)/, $(SRCS:.cpp=.o))
 
 all: $(NAME)
 
-$(NAME) : $(OBJ)
+$(NAME): $(OBJ_DIR) $(OBJ) $(HEADERS)
 	clang++ -o $(NAME) $(OBJ) -lncurses
 
-./%.o: ./%.cpp $(INC)
-	clang++ $(FLAGS) -o $@ -c $<
+$(OBJ_DIR)/%.o: %.cpp $(HEADERS)
+	clang++ $(FLAGS) -c $< -o $@
+
+$(OBJ_DIR):
+	mkdir $(OBJ_DIR)
 
 clean :
-	rm -f $(OBJ)
+	rm -fr $(OBJ_DIR)
 
 fclean: clean
 	rm -f $(NAME)
 
 re:	fclean all
+
+#------------------------------- DEBUG -----------------------------------------
+pr: print-OBJ_LIST print-HEADERS
+
+print-%  : ; @echo $* = $($*)
+#-------------------------------------------------------------------------------

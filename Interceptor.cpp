@@ -3,11 +3,13 @@
 //
 #include "Colors.hpp"
 #include "Interceptor.hpp"
+#include "EnemyBullet.hpp"
+#include "Game.hpp"
 
 Interceptor::Interceptor() :Marine(){
 	this->color = COLOR_PAIR(BLUE) | A_BOLD;
 	this->_char = '<';
-	this->_hp = 10;
+	this->_hp = 1;
 	this->_type = "pirate";
 }
 
@@ -40,5 +42,11 @@ Marine *Interceptor::clone() const {
 void Interceptor::movemarine() {
 	if (this->gettime() > 0.01) {
 		Marine::movemarine();
+	}
+}
+void Interceptor::attack() {
+	if (this->gettimeAttack() > 0.5) {
+		Game::getSquad().pushMarine(new EnemyBullet(*this));
+		Marine::attack();
 	}
 }

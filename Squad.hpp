@@ -5,14 +5,17 @@
 #ifndef SQUAD_HPP
 #define SQUAD_HPP
 #include "Marine.hpp"
-
+#include "Character.hpp"
 
 class Squad {
 private:
 	Marine	**_squad;
-	Marine	*_source[4];
+	Marine	*_source[5];
 	int		_count;
 	void	learnMarines();
+	clock_t _spawnClock;
+	clock_t _spawnBOSS;
+
 
 public:
 	Squad();
@@ -22,8 +25,10 @@ public:
 	void drawSquad();
 	void action();
 	void popMarine(Marine *);
+	void pushMarine(Marine *);
+	int searchInterseption(Character &chr);
 	void dellDeadMarines();
-
+	void 	spawn();
 };
 
 

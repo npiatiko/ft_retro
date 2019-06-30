@@ -18,6 +18,7 @@ public:
 	void drawmarine();
 	Marine *clone()const;
 	void movemarine();
+	void attack();
 };
 
 
