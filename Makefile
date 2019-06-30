@@ -43,7 +43,7 @@ $(OBJ_DIR):
 	mkdir $(OBJ_DIR)
 
 clean :
-	rm -f $(OBJ)
+	rm -fr $(OBJ_DIR)
 
 fclean: clean
 	rm -f $(NAME)

@@ -9,8 +9,12 @@
 
 int main (){
 
+	system("afplay -v 0.8 8bit.mp3 &");
+
 	Game game;
 	srand(time(NULL));
 	game.play();
+	
+	system("killall afplay");
 	return 0;
 }
