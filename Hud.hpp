@@ -22,14 +22,13 @@ public:
 
 	Hud& operator= ( Hud const & );
 
-	unsigned int getScore ( void ) const;
-	unsigned int getLives ( void ) const;
 	time_t getStart ( void ) const;
 	float getTime ( void ) const;
 	std::string getTimeString ( void ) const;
 	char getSkyXY ( int const &, int const & ) const;
 
 	void drawHud ( int const &, int const & ) const;
+	void drawEndGame ( int const & ) const;
 
 	void startPause ( void );
 	void endPause ( void );
