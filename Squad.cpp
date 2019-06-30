@@ -2,7 +2,7 @@
 // Created by Nickolay PIATIKOP on 2019-06-29.
 //
 
-#include <ncurses.h>
+#include "Colors.hpp"
 #include "Squad.hpp"
 #include "Fighter.hpp"
 #include "Interceptor.hpp"
@@ -53,6 +53,7 @@ void Squad::learnMarines() {
 void Squad::action() {
 	for (int i = 0; i < this->_count; ++i) {
 		this->_squad[i]->movemarine();
+		this->_squad[i]->attack();
 	}
 }
 
@@ -75,9 +76,21 @@ void Squad::popMarine(Marine *marine) {
 
 void Squad::dellDeadMarines() {
 	for (int i = 0; i < this->_count; ++i) {
-		if (this->_squad[i]->getX() == 0){
+		if (this->_squad[i]->getX() == 0 || this->_squad[i]->getX() > X){
 			popMarine(this->_squad[i]);
 		}
 	}
-	mvprintw(71, 10, "count:[%d]", this->_count);
+	mvprintw(72, 10, "count:[%d]", this->_count);
+}
+void Squad::pushMarine(Marine *newMarine) {
+
+	Marine **tmp = this->_squad;
+
+	this->_squad = new Marine *[this->_count + 1];
+	for (int i = 0; i < this->_count; ++i) {
+		this->_squad[i] = tmp[i];
+	}
+	this->_squad[this->_count] = newMarine;
+	this->_count++;
+	delete[](tmp);
 }

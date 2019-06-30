@@ -22,6 +22,7 @@ public:
 	void drawSquad();
 	void action();
 	void popMarine(Marine *);
+	void pushMarine(Marine *);
 	void dellDeadMarines();
 
 };

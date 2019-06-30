@@ -17,6 +17,7 @@ private:
 	Hud _hud;
 
 public:
+	static Squad &getSquad();
 	Game();
 	~Game();
 	Game(const Game &obj);
